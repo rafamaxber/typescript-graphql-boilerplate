@@ -1,3 +1,5 @@
+import config from './config'
+
 import { ApolloServer } from 'apollo-server-express'
 import depthLimit from 'graphql-depth-limit'
 import { createServer } from 'http'
@@ -11,12 +13,13 @@ const server = new ApolloServer({
 
 server.applyMiddleware({
   app,
-  path: '/graphql',
+  path: config.graphQlPath,
 })
+
 const httpServer = createServer(app)
 
-httpServer.listen({ port: 3000 }, (): void =>
+httpServer.listen({ port: config.port }, (): void =>
   console.log(
-    `\n🚀      GraphQL is now running on http://localhost:3000/graphql`,
+    `\n🚀      GraphQL is now running on http://localhost:${config.port}${config.graphQlPath}`,
   ),
 )

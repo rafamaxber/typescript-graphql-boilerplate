@@ -1,13 +1,23 @@
 import 'graphql-import-node'
 
-import * as typeDefs from './schema/schema.graphql'
-import { makeExecutableSchema } from 'graphql-tools'
-import resolvers from './modules/Template/resolvers/template'
+import path from 'path'
 import { GraphQLSchema } from 'graphql'
+import { makeExecutableSchema, IResolvers } from 'graphql-tools'
+import { mergeResolvers, fileLoader } from 'merge-graphql-schemas'
+
+import * as typeDefs from './schema/schema.graphql'
+
+function generateResolvers(): IResolvers {
+  const resolverList: IResolvers[] = fileLoader(
+    path.join(__dirname, '/**/resolvers/*.ts'),
+  )
+
+  return mergeResolvers(resolverList)
+}
 
 const schema: GraphQLSchema = makeExecutableSchema({
   typeDefs,
-  resolvers,
+  resolvers: generateResolvers(),
 })
 
 export default schema

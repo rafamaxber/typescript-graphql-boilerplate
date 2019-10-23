@@ -1,17 +1,23 @@
 {
-  "name": "bff-zendesk",
+  "name": "simple-typescript-graphql-boilerplate",
+  "description": "Thats a simple nodeJs project using typescript, graphql, apollo server express and QA tools like eslint, prettier and commit lint.",
+  "keywords": [
+    "graphql",
+    "nodeJs",
+    "apollo server express",
+    "nodemon",
+    "typescript"
+  ],
   "version": "1.0.0",
   "main": "index.js",
-  "author": "Rafael Bernardo <rafael.bernardo@ifood.com.br>",
+  "author": "Rafael Bernardo <rafamaxber@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node 'dist/server.js'",
-    "build": "node src/generate-schemas.js && tsc -p . && ncp src/schema dist/schema",
-    "start:dev": "npm run build:dev",
-    "watch-app": "nodemon --config nodemon.json src/server.ts",
-    "watch-graphql": "nodemon --ignore src/schema --config nodemon-generate-schema.json src/generate-schemas.js",
     "dev": "concurrently \"npm:watch-*\"",
-    "build:dev": "nodemon 'src/server.ts' --exec 'ts-node' src/server.ts -e ts,graphql",
+    "start": "node 'dist/server.js'",
+    "build": "node scripts/generate-schemas.js && tsc -p . && ncp src/schema dist/schema",
+    "watch-app": "nodemon --config nodemon/nodemon.json src/server.ts",
+    "watch-graphql": "nodemon --ignore src/schema --config nodemon/nodemon-generate-schema.json scripts/generate-schemas.js",
     "lint": "eslint src",
     "format": "prettier --write \"**/*.+(js|jsx|json|yml|yaml|css|less|scss|ts|tsx|md|graphql|mdx)\""
   },
