@@ -15,10 +15,14 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "tsc --noEmit && pretty-quick --staged"
+      "pre-commit": "tsc --noEmit && pretty-quick --staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
   "devDependencies": {
+    "@commitlint/cli": "^8.2.0",
+    "@commitlint/config-conventional": "^8.2.0",
+    "@commitlint/prompt-cli": "^8.2.0",
     "@types/compression": "^1.0.1",
     "@types/graphql-depth-limit": "^1.1.2",
     "@types/helmet": "0.0.44",
