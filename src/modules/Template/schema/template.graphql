@@ -2,7 +2,3 @@ type Query {
   helloWorld: String!
   sera: String
 }
-
-schema {
-  query: Query
-}

@@ -1,0 +1,7 @@
+{
+  "watch": ["src"],
+  "ext": "graphql",
+  "execMap": {
+    "node": "node ./src/generate-schemas.js"
+  }
+}
