@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  app:
+    container_name: app
+    restart: always
+    build: .
+    environment:
+      - NOVE_ENV=production
+      - PORT=4000
+    ports:
+      - '4000:4000'

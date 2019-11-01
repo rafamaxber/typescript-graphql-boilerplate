@@ -8,8 +8,12 @@ import { mergeResolvers, fileLoader } from 'merge-graphql-schemas'
 import * as typeDefs from './schema/schema.graphql'
 
 export function generateResolvers(): IResolvers {
+  const resolversPath =
+    process.env.NOVE_ENV === 'production'
+      ? '/**/resolvers/*.js'
+      : '/**/resolvers/*.ts'
   const resolverList: IResolvers[] = fileLoader(
-    path.join(__dirname, '/**/resolvers/*.ts'),
+    path.join(__dirname, resolversPath),
   )
 
   return mergeResolvers(resolverList)

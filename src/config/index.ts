@@ -7,7 +7,7 @@ const envFile = process.env.NODE_ENV === 'test' ? '.env.test' : '.env'
 const envFound = dotenv.config({ path: envFile })
 
 if (envFound.error) {
-  throw new Error("Couldn't find .env file \n\n")
+  console.log("Couldn't find .env file \n\n")
 }
 
 interface Config {
