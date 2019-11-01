@@ -14,13 +14,15 @@
   "license": "MIT",
   "scripts": {
     "docker:dev": "docker-compose -f \"dev.docker-compose.yml\" up -d --build",
+    "docker:build:prod": "npm run build && docker-compose -f \"docker-compose.yml\" up -d --build",
     "dev": "concurrently \"npm:watch-*\"",
     "start": "node 'dist/server.js'",
     "build": "node scripts/generate-schemas.js && tsc -p . && ncp src/schema dist/schema",
     "watch-app": "nodemon --config nodemon/nodemon.json src/server.ts",
     "watch-graphql": "nodemon --ignore src/schema --config nodemon/nodemon-generate-schema.json scripts/generate-schemas.js",
     "lint": "eslint src",
-    "format": "prettier --write \"**/*.+(js|jsx|json|yml|yaml|css|less|scss|ts|tsx|md|graphql|mdx)\""
+    "format": "prettier --write \"**/*.+(js|jsx|json|yml|yaml|css|less|scss|ts|tsx|md|graphql|mdx)\"",
+    "test": "jest"
   },
   "husky": {
     "hooks": {
@@ -35,14 +37,18 @@
     "@types/compression": "^1.0.1",
     "@types/graphql-depth-limit": "^1.1.2",
     "@types/helmet": "0.0.44",
+    "@types/jest": "^24.0.19",
+    "@types/node": "^12.11.7",
     "@typescript-eslint/eslint-plugin": "^2.5.0",
     "@typescript-eslint/parser": "^2.5.0",
     "concurrently": "^5.0.0",
     "dotenv": "^8.2.0",
     "eslint": "^6.5.1",
+    "jest": "^24.9.0",
     "nodemon": "^1.19.4",
     "prettier": "^1.18.2",
     "sucrase": "^3.10.1",
+    "ts-jest": "^24.1.0",
     "ts-node": "^8.4.1",
     "typescript": "^3.6.4"
   },

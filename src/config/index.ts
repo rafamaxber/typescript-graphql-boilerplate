@@ -19,11 +19,13 @@ interface Config {
 }
 
 function config(): Config {
+  const { PORT, GRAPHQL_PATH, LOG_LEVEL } = process.env
+
   return {
-    port: process.env.PORT || 3000,
-    graphQlPath: process.env.GRAPHQL_PATH || '/graphql',
+    port: PORT || 3000,
+    graphQlPath: GRAPHQL_PATH || '/graphql',
     logs: {
-      level: process.env.LOG_LEVEL || 'silly',
+      level: LOG_LEVEL || 'silly',
     },
   }
 }

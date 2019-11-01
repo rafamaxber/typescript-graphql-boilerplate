@@ -7,7 +7,7 @@ import { mergeResolvers, fileLoader } from 'merge-graphql-schemas'
 
 import * as typeDefs from './schema/schema.graphql'
 
-function generateResolvers(): IResolvers {
+export function generateResolvers(): IResolvers {
   const resolverList: IResolvers[] = fileLoader(
     path.join(__dirname, '/**/resolvers/*.ts'),
   )
