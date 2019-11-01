@@ -5,10 +5,16 @@ import depthLimit from 'graphql-depth-limit'
 import { createServer } from 'http'
 import schema from './schema'
 import app from './config/express-config'
+import { TemplateAPI } from './services/TemplateAPI'
 
 const server = new ApolloServer({
   schema,
   validationRules: [depthLimit(7)],
+  dataSources: (): {} => {
+    return {
+      templateAPI: new TemplateAPI(),
+    }
+  },
 })
 
 server.applyMiddleware({
