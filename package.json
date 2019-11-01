@@ -13,6 +13,7 @@
   "author": "Rafael Bernardo <rafamaxber@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "docker:dev": "docker-compose -f \"dev.docker-compose.yml\" up -d --build",
     "dev": "concurrently \"npm:watch-*\"",
     "start": "node 'dist/server.js'",
     "build": "node scripts/generate-schemas.js && tsc -p . && ncp src/schema dist/schema",
