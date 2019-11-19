@@ -1,6 +1,6 @@
 import { RESTDataSource, RequestOptions } from 'apollo-datasource-rest'
 
-export class HttpClient extends RESTDataSource { 
+export class HttpClient extends RESTDataSource {
   public willSendRequest(request: RequestOptions): void {
     const { token } = this.context
 

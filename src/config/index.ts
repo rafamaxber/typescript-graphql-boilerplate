@@ -15,7 +15,7 @@ interface Config {
   port: string | number
   logs: {
     level: string
-  },
+  }
   oauthUrl: string
 }
 
@@ -23,7 +23,7 @@ function config(): Config {
   const { PORT, GRAPHQL_PATH, LOG_LEVEL, OAUTH_URL } = process.env
 
   return {
-    oauthUrl: OAUTH_URL,
+    oauthUrl: OAUTH_URL || '',
     port: PORT || 3000,
     graphQlPath: GRAPHQL_PATH || '/graphql',
     logs: {

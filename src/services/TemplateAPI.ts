@@ -1,8 +1,8 @@
 import { HttpClient } from './HttpClient'
-import from '../config'
+import config from '../config'
 
 export class TemplateAPI extends HttpClient {
-  public baseURL = process.env.OAUTH_URL
+  public baseURL = config.oauthUrl
 
   async getSomething<T>(id: number): Promise<T> {
     return this.get(`movies/${id}`)
